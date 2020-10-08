@@ -3,6 +3,6 @@ module.exports.home = function(req,res){
 
 }
 
-module.exports.text = function(req,res){
-    res.end('<p1> i m beautiful</p>');
-}
+// module.exports.text = function(req,res){
+//     res.end('<p1> i m beautiful</p>');
+// }
