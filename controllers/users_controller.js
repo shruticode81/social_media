@@ -80,7 +80,6 @@ module.exports.create = function(req,res){
 }
 ///get the sign in data
 module.exports.createSession = function(req,res){
-<<<<<<< HEAD
     console.log( req);
 
     //todo later
@@ -90,7 +89,7 @@ module.exports.createSession = function(req,res){
 module.exports.destroySession = function(req,res){
     req.logout();
     return res.redirect('/');
-=======
+
     //Steps to authenticate
     //find the user in db
     User.findOne({email:req.body.email},function(err,user){
@@ -99,7 +98,7 @@ module.exports.destroySession = function(req,res){
             return;
         }
         console.log(user);
-        //handle user found
+        //handle user foundwant to revert
         if(user){
             //handle password which does not match
             if(user.password != req.body.password){
@@ -113,7 +112,7 @@ module.exports.destroySession = function(req,res){
         }
     });
 
->>>>>>> f6fad511c7192d5d04c3aa74ef97ce5bb123d48e
+// >>>>>>> f6fad511c7192d5d04c3aa74ef97ce5bb123d48e
 }
 
 
