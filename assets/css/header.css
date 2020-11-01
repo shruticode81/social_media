@@ -1,0 +1,25 @@
+.style-list {
+  list-style: none;
+  margin: 0px;
+  padding-left: 0px; }
+  .style-list .header-main {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 54px;
+    background-color: teal; }
+    .style-list .header-main .logo {
+      margin: 12px 10px;
+      font-weight: bold;
+      font-size: 29;
+      font-family: 'Times New Roman', Times, serif; }
+      .style-list .header-main .logo a {
+        text-decoration: none;
+        color: white; }
+    .style-list .header-main .lists li {
+      display: inline-block;
+      margin: 10px 8px;
+      font-size: 19; }
+      .style-list .header-main .lists li a {
+        text-decoration: none;
+        color: white; }
