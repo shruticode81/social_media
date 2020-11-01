@@ -9,6 +9,7 @@ router.get('/posts',usersController.posts); //wait
 router.get('/sign-up',usersController.signUp);
 router.get('/sign-in',usersController.signIn);
 router.post('/create',usersController.create);
+<<<<<<< HEAD
 //use  passport as a middleware to authenticate
 router.post('/create-session',passport.authenticate(
     'local',
@@ -17,6 +18,9 @@ router.post('/create-session',passport.authenticate(
 ),usersController.createSession);
 
 router.get('/sign-out', usersController.destroySession);
+=======
+router.post('/create-session',usersController.createSession);
+>>>>>>> f6fad511c7192d5d04c3aa74ef97ce5bb123d48e
 module.exports=router;
 
 

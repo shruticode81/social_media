@@ -1,10 +1,26 @@
 const User = require('../models/users');
 
 module.exports.profile = function(req,res){
+    //check if user_id is present in cookies
+    console.log(`content of ${req.cookies.user_id}`);
+    if(req.cookies.user_id) {
+        User.findById(req.cookies.user_id,function(err,user){
+            if(user){
+                return res.render('users',{
+                    title:"User Profile",
+                    user:user
+                });
+            }
+            return res.redirect('/users/sign-in');
+        })
+    }else{
+        return res.redirect('/users/sign-in');
+    }
     //res.end('<h1> Users Profile Render </h1>');
-    return res.render('users',{
-        title: "Profile"
-    });
+    // return res.render('users',{
+    //     title: "Profile"
+    // });
+    
 }
 // tell me the issue
 module.exports.posts = function(req,res){
@@ -64,6 +80,7 @@ module.exports.create = function(req,res){
 }
 ///get the sign in data
 module.exports.createSession = function(req,res){
+<<<<<<< HEAD
     console.log( req);
 
     //todo later
@@ -73,6 +90,30 @@ module.exports.createSession = function(req,res){
 module.exports.destroySession = function(req,res){
     req.logout();
     return res.redirect('/');
+=======
+    //Steps to authenticate
+    //find the user in db
+    User.findOne({email:req.body.email},function(err,user){
+        if(err){
+            console.log('error in finding user in signing up');
+            return;
+        }
+        console.log(user);
+        //handle user found
+        if(user){
+            //handle password which does not match
+            if(user.password != req.body.password){
+                return res.redirect('back');
+            }
+            //handle session creatation
+            res.cookie('user_id',user.id);
+            return res.redirect('/users/profile');
+        }else{
+            return res.redirect('back');
+        }
+    });
+
+>>>>>>> f6fad511c7192d5d04c3aa74ef97ce5bb123d48e
 }
 
 
