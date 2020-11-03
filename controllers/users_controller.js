@@ -80,7 +80,7 @@ module.exports.create = function(req,res){
 }
 ///get the sign in data
 module.exports.createSession = function(req,res){
-    console.log( req);
+    // console.log( req);
 
     //todo later
     return res.redirect('/'); // as user is already signed in so just redirect

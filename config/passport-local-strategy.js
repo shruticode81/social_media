@@ -9,7 +9,8 @@ passport.use(new LocalStrategy({
     function(email,password,done){
         //find a user and establish the identity
         User.findOne({email:email},function(err,user){
-            console.log(`display the user:${user}`);
+            // console.log(`display the user:${user}`);
+            console.log(user);
             if(err){
                 console.log('Error in finding user----> Passport');
                 return done(err);
@@ -25,6 +26,7 @@ passport.use(new LocalStrategy({
 
 //Serializing the user to decide which key to be kept in the cookies
 passport.serializeUser(function(user,done){
+    // console('---',user.id);
     done(null,user.id); //user.id gets stored in req.session.passport.user={id:''}
 });
 
