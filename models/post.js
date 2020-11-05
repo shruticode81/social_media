@@ -9,7 +9,7 @@ const postSchema = new mongoose.Schema({
         ref: 'User'
     },
     //includes the array of ids of the comments in this post Schema itself
-    Comments: [
+    comments: [ 
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Comment'
@@ -21,3 +21,5 @@ const postSchema = new mongoose.Schema({
 });
 const Post = mongoose.model('Post',postSchema);
 module.exports=Post;
+//userid same hain dekho comments array mein post me joh comments h usme comment ki hi id h..main aapko dikhata hu
+//just type id  heres mai last ka 5digits dekhsmj wait mai call kari
