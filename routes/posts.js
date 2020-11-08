@@ -10,4 +10,5 @@ const passpost = require('passport');
 const postsController=require('../controllers/posts_controller');
 
 router.post('/create',passpost.checkAuthentication,postsController.create);
+router.get('/destroy/:id',passpost.checkAuthentication,postsController.destroy);
 module.exports=router;
