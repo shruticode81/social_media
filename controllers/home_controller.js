@@ -1,7 +1,8 @@
 const Post=require('../models/post');
+const User = require('../models/users');
 module.exports.home = function(req,res){
     //return res.end('<h1> Express is up in running codeial!</h1>');
-    console.log('*/*',req.cookies);
+    //console.log('*/*',req.cookies);
     //res.cookie('user_id',1);
 
     // displaying just post content
@@ -22,12 +23,17 @@ module.exports.home = function(req,res){
             path:'user'
         }
     })
-    .exec(function(err,posts){
-        console.log('//',posts[0].comments[0]);
+    .exec(function(err,posts){ 
+
+       // console.log('//',posts[0].comments[0]);
+       User.find({},function(err,users){
         return res.render('home',{
             title: "Codeial | Home",
-            posts:posts
+            posts:posts,
+            all_users: users
         });
+       });
+        
     });
 
 
