@@ -100,7 +100,9 @@ module.exports.create = function(req,res){
 }
 ///get the sign in data
 module.exports.createSession = function(req,res){
-    // console.log( req);
+    
+    req.flash('success','Logged in Successfully');
+    // console.log(req.flash('success'));
 
     //todo later
     return res.redirect('/'); // as user is already signed in so just redirect
@@ -108,29 +110,30 @@ module.exports.createSession = function(req,res){
 }
 module.exports.destroySession = function(req,res){
     req.logout();
+    req.flash('success','You are Logged out');
     return res.redirect('/');
 
     //Steps to authenticate
     //find the user in db
-    User.findOne({email:req.body.email},function(err,user){
-        if(err){
-            console.log('error in finding user in signing up');
-            return;
-        }
-        console.log(user);
-        //handle user foundwant to revert
-        if(user){
-            //handle password which does not match
-            if(user.password != req.body.password){
-                return res.redirect('back');
-            }
-            //handle session creatation
-            res.cookie('user_id',user.id);
-            return res.redirect('/users/profile');
-        }else{
-            return res.redirect('back');
-        }
-    });
+    // User.findOne({email:req.body.email},function(err,user){
+    //     if(err){
+    //         console.log('error in finding user in signing up');
+    //         return;
+    //     }
+    //     console.log(user);
+    //     //handle user foundwant to revert
+    //     if(user){
+    //         //handle password which does not match
+    //         if(user.password != req.body.password){
+    //             return res.redirect('back');
+    //         }
+    //         //handle session creatation
+    //         res.cookie('user_id',user.id);
+    //         return res.redirect('/users/profile');
+    //     }else{
+    //         return res.redirect('back');
+    //     }
+    // });
 
 // >>>>>>> f6fad511c7192d5d04c3aa74ef97ce5bb123d48e
 }
