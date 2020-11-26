@@ -39,8 +39,9 @@ module.exports.destroy = async function(req,res){
                 message:"post and associated comments deleted!"
             });
         }else{
-            req.flash('error', 'You cannot delete this post!');
-            return res.redirect('back');
+            return res.json(401,{
+                message:"you can't delete this post!!"
+            });
         }
         
     }catch(err){
